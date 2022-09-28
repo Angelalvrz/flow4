@@ -1,0 +1,198 @@
+[
+    {
+        "id": "77085e0fa4169236",
+        "type": "tab",
+        "label": "Flow 4 MQTT",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b6824c15995faf5c",
+        "type": "mqtt in",
+        "z": "77085e0fa4169236",
+        "name": "",
+        "topic": "codigoIoT/Mor/mqtt/flow4",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "8e068d0328ca964d",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "c63d9c5e5423cfcd"
+            ]
+        ]
+    },
+    {
+        "id": "c63d9c5e5423cfcd",
+        "type": "json",
+        "z": "77085e0fa4169236",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 290,
+        "y": 100,
+        "wires": [
+            [
+                "74bc17eb21208310",
+                "387a56bb249f7db7"
+            ]
+        ]
+    },
+    {
+        "id": "74bc17eb21208310",
+        "type": "function",
+        "z": "77085e0fa4169236",
+        "name": "Temperatura",
+        "func": "msg.payload = msg.payload.temp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 100,
+        "wires": [
+            [
+                "64e7e9cc2d9c1361"
+            ]
+        ]
+    },
+    {
+        "id": "387a56bb249f7db7",
+        "type": "function",
+        "z": "77085e0fa4169236",
+        "name": "Humedad",
+        "func": "msg.payload = msg.payload.hum;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 160,
+        "wires": [
+            [
+                "d0df9b61e883b2ee"
+            ]
+        ]
+    },
+    {
+        "id": "64e7e9cc2d9c1361",
+        "type": "ui_gauge",
+        "z": "77085e0fa4169236",
+        "name": "",
+        "group": "259bca447bc10181",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "ºC",
+        "format": "{{value}}",
+        "min": "2",
+        "max": "38",
+        "colors": [
+            "#3584e4",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "18",
+        "seg2": "26",
+        "className": "",
+        "x": 670,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "d0df9b61e883b2ee",
+        "type": "ui_gauge",
+        "z": "77085e0fa4169236",
+        "name": "",
+        "group": "4b52af42c0d55339",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "Humedad Relativa",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 690,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "8e068d0328ca964d",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "259bca447bc10181",
+        "type": "ui_group",
+        "name": "Temperatura",
+        "tab": "7cf0cf4e322a10b4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4b52af42c0d55339",
+        "type": "ui_group",
+        "name": "Humedad",
+        "tab": "7cf0cf4e322a10b4",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7cf0cf4e322a10b4",
+        "type": "ui_tab",
+        "name": "Flow 4 -MQTT",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
